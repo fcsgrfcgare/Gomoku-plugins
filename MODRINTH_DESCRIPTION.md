@@ -260,7 +260,7 @@ Deploy by copying the jar into the server's `plugins/` folder and restarting. On
 
 ## License
 
-This project is licensed under the MIT License. See `LICENSE` in the repository root.
+This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0). See `LICENSE` in the repository root.
 
 
 ---
@@ -692,7 +692,7 @@ pieces:
 
 ## 许可证
 
-本项目使用 MIT License，详见仓库根目录的 LICENSE。
+本项目使用 GNU Affero General Public License v3.0（AGPL-3.0），详见仓库根目录的 LICENSE。
 
 
 ---
