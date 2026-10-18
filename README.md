@@ -4,7 +4,7 @@
 
 **当前版本：1.1.4**
 
-[中文使用说明](MODRINTH_DESCRIPTION.md) · [English documentation](MODRINTH_DESCRIPTION_EN.md)
+[使用说明 / Documentation](MODRINTH_DESCRIPTION.md)（English first, 中文见下方）
 
 ---
 
@@ -41,7 +41,7 @@
 3. 在游戏内执行 `/gomoku setlobby` 设置大厅；
 4. 用 `/gomoku admin add <房间>`、`/gomoku admin build <房间>`、`/gomoku admin save <房间>` 创建并保存房间。
 
-详细流程见 [中文使用说明](MODRINTH_DESCRIPTION.md)。
+详细流程见 [使用说明](MODRINTH_DESCRIPTION.md)（英文在上，中文在下）。
 
 ## 常用命令
 
@@ -79,7 +79,7 @@ hotbar:
 
 - `src/main/java`：插件源码
 - `src/main/resources`：默认配置、语言文件、`plugin.yml`
-- `MODRINTH_DESCRIPTION*.md`：完整使用说明（中/英）
+- `MODRINTH_DESCRIPTION.md`：完整使用说明（上方英文，下方中文）
 - `LICENSE`：MIT
 - `THIRD_PARTY_NOTICES.md`：内置依赖许可说明
 
