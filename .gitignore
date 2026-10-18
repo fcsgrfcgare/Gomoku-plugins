@@ -1,0 +1,57 @@
+# Gradle
+.gradle/
+.gradle-raven/
+build/
+out/
+*.class
+
+# Gradle wrapper jar must be tracked
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse / NetBeans / VS Code
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+bin/
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+.vscode/
+.fleet/
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# Local test server and world data
+server/
+
+# Local-only/unrelated files
+Raven-main/
+Raven-main.zip
+.diag/
+config.json
+claude-chat.log
+*.log
+*.hprof
+local.properties
+
+# Obfuscation artifacts (build only produces Gomoku.jar)
+Gomoku-obf.jar
+*.obf.jar
+
+# JVM crash logs
+hs_err_pid*.log
+replay_pid*.log

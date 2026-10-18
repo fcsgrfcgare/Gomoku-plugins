@@ -1,0 +1,180 @@
+# Gomoku 配置文件
+# 注释会跟随 config.yml 里的 locale 自动切换（zh_cn = 中文，en = 英文），配置值不会被修改
+
+# 语言: "zh_cn"（中文）或 "en"（英文）
+# 只影响游戏内提示/帮助/计分板文本，不会修改本配置文件
+locale: "zh_cn"
+
+# 每一步的思考时间（秒）
+turn-seconds: 60
+
+# 玩家数据存储
+# type: json（默认，plugins/Gomoku/stats.json）
+#       sqlite / sqldb = 本地 SQL 数据库文件 plugins/Gomoku/stats.db
+#       mysql = 外部 MySQL/MariaDB
+# SQLite/MySQL 会自动建表；连接失败/驱动不可用时自动回退 JSON
+# auto-migrate: 目标表为空时自动把 stats.json 导入（JSON -> SQL），JSON 文件保留
+storage:
+  type: json
+  auto-migrate: true
+  # 本地 SQL 数据库（type: sqlite 或 sqldb）
+  sqlite:
+    file: "stats.db"
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    database: gomoku
+    username: root
+    password: ""
+    table-prefix: "gomoku_"
+    use-ssl: false
+    # 数据库不存在时自动 CREATE DATABASE IF NOT EXISTS
+    # 账号没有建库权限时改成 false，先手动建库
+    create-database: true
+
+# 对局结束后在结算画面停留的秒数，然后回大厅（0 = 立即回）
+game:
+  return-delay-seconds: 10
+
+# 大厅位置（用 /gomoku setlobby 设置）
+lobby:
+  set: false
+  world: world
+  x: 0.0
+  y: 64.0
+  z: 0.0
+  yaw: 0.0
+  pitch: 0.0
+
+# 侧边栏计分板
+# ------------------
+# 布局已移到语言文件，随 lang-version 一起更新，方便中英文分别维护。
+# 在以下文件的 "scoreboard:" 下修改：
+#   plugins/Gomoku/languages/zh_cn.yml
+#   plugins/Gomoku/languages/en.yml
+# 键名：scoreboard.enabled、scoreboard.update-interval、
+#       scoreboard.<lobby|game|spectator>.title / .lines
+
+# 大厅快捷栏物品
+# material 兼容 1.8 旧名：NETHER_STAR / WORKBENCH / REDSTONE_BLOCK / ANVIL / CHEST
+# 房间菜单的名称/说明由语言文件控制: room-menu-item-name / room-menu-item-lore
+hotbar:
+  # 房间菜单（下界之星）：左键或右键打开 54 格房间列表
+  menu:
+    # false = 不显示房间菜单物品（已有物品也会被移除）
+    enabled: true
+    slot: 0
+    material: NETHER_STAR
+  # 棋子商店（箱子）
+  shop:
+    # false = 不显示棋子商店物品（已有物品也会被移除）
+    enabled: true
+    slot: 7
+
+# RapFi AI 引擎（只有 15x15 房间的“地狱”档会用，其它档位走内置 Java AI）
+ai:
+  engine:
+    enabled: false            # 放好 exe 后改成 true
+    path: "plugins/Gomoku/engine/rapfi.exe" # 换成你的 RapFi 引擎路径
+    timeout-ms: 3000          # 单步思考上限，必须小于 turn-seconds
+
+# 音效开关
+# sound  : 音效名（Bukkit Sound 枚举，如 BLOCK_WOODEN_DOOR_OPEN / BLOCK_STONE_PLACE / ENTITY_PLAYER_LEVELUP）
+# volume : 音量（0 = 关闭这个音效）
+# pitch  : 声调，同时决定播放速度（0.5 = 又慢又沉，1.0 = 原速，2.0 = 又快又尖）
+sounds:
+  start:
+    sound: BLOCK_WOODEN_DOOR_OPEN
+    volume: 1.0
+    pitch: 1.0
+  place:
+    sound: BLOCK_STONE_PLACE
+    volume: 1.0
+    pitch: 0.8
+
+# 加入服务器提示（原版 join 消息会被替换）
+# lobby: 是否提示大厅世界里的玩家
+# room : 对局中是否提示；默认 false，对局内用自己的 game-start 等提示
+join-message:
+  lobby: true
+  room: false
+
+# 退出服务器提示（和 join-message 对应）
+# lobby: 大厅世界是否提示玩家退出服务器
+# room : 对局中是否提示；默认 false，对局内用自己的 forfeit/取消提示
+quit-message:
+  lobby: true
+  room: false
+
+# 保护选项（只作用于大厅世界和房间世界）
+# prevent-death: 致命伤害直接取消，玩家不会死
+# block-player-attacks: 除管理员外，玩家不能攻击/造成伤害
+# prevent-player-damage: 玩家不受任何伤害
+protect:
+  prevent-death: true
+  block-player-attacks: true
+  prevent-player-damage: true
+
+# 房间编辑权限
+# 房间仍使用原来的保护逻辑：
+# - 对局中（PLAYING/WAITING）任何人都不能破坏/交互/放置
+# - 房间世界非对局中，只有 gomoku.admin 可以破坏/交互/放置
+# 大厅世界的保护由下面的 lobby-protect 控制
+#
+# 大厅世界保护
+# 只有拥有 gomoku.admin 且处于创造模式的玩家，才能在大厅世界破坏/交互/放置
+lobby-protect:
+  enabled: true
+  # 需要 gomoku.admin 权限
+  require-admin: true
+  # 需要创造模式
+  require-creative: true
+
+# 战绩写盘延迟（秒），0 = 立即写
+stats:
+  save-delay-seconds: 10
+
+# ───────── 赢家庆祝 ─────────
+# 仅真人玩家获胜时触发；AI 获胜/平局/超时不触发。
+win-celebration:
+  enabled: true
+
+  # true  = 只生成 TNT，other 的实体/方块配置会被忽略
+  # false = 不生成 TNT，改为读取 other 的 entity / block
+  #         如果 other 也没填，则不生成任何东西
+  # 控制台会用英文 info 提示最终采用哪种方式，不会报错
+  tnt: true
+
+  # 相对赢家脚的位置，-1 = 脚下一格
+  offset-y: -1
+  # 玩家范围（半径）：0 = 正下方；>0 = 在赢家周围这个半径内随机水平偏移
+  range: 0
+  # TNT / other 效果的生成间隔，单位 tick
+  # 1 = 每 tick，20 = 每秒，40 = 每 2 秒
+  interval-ticks: 40
+
+  # TNT 专属配置（tnt: true 时生效）
+  tnt-options:
+    ignited: true          # 默认激活/引燃
+    fuse-ticks: 20         # 引燃时间
+    break-blocks: false    # 是否破坏方块（默认否），不用担心棋盘或世界被破坏
+    damage-entities: false # 是否伤害实体（默认否）
+
+  # 其他实体/方块专属配置（tnt: false 时生效）
+  # 和上面的 tnt-options 分开，互不影响
+  other:
+    # 实体庆祝，例如 FIREWORK；留空则不生成
+    entity: FIREWORK
+    entity-range: 0        # 实体生成范围（半径）
+    entity-offset-y: 1     # 实体相对赢家脚的高度
+    # 方块庆祝，例如 TNT / REDSTONE_BLOCK；留空则不生成
+    block: TNT
+    block-range: 0         # 方块生成范围（半径）
+    block-offset-y: -1     # 方块相对赢家脚的高度
+
+  # 赢家胜利时在棋盘四个角生成烟花
+  corner-fireworks:
+    enabled: true
+    # 四角烟花生成间隔，单位 tick
+    # 1 = 每 tick，20 = 每秒，40 = 每 2 秒
+    interval-ticks: 40

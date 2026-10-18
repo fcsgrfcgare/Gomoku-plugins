@@ -1,0 +1,181 @@
+# Gomoku configuration
+# Comments follow the locale in config.yml (zh_cn = Chinese, en = English); values are never changed
+
+# Language: "zh_cn" (Chinese) or "en" (English)
+# Only affects in-game messages/help/scoreboard; it never modifies this file
+locale: "zh_cn"
+
+# Time budget for every move, in seconds
+turn-seconds: 60
+
+# Player stats storage
+# type: json (default, plugins/Gomoku/stats.json)
+#       sqlite / sqldb = local SQL database file plugins/Gomoku/stats.db
+#       mysql = external MySQL/MariaDB
+# SQLite/MySQL create their table automatically; on connection/driver failure it falls back to JSON
+# auto-migrate: import stats.json when the target table is empty (JSON -> SQL); the JSON file is kept
+storage:
+  type: json
+  auto-migrate: true
+  # Local SQL database (type: sqlite or sqldb)
+  sqlite:
+    file: "stats.db"
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    database: gomoku
+    username: root
+    password: ""
+    table-prefix: "gomoku_"
+    use-ssl: false
+    # Automatically CREATE DATABASE IF NOT EXISTS when the database is missing
+    # Set to false if the account cannot create databases; create it manually first
+    create-database: true
+
+# Seconds to stay on the result screen after a game, then return to the lobby (0 = immediate)
+game:
+  return-delay-seconds: 10
+
+# Lobby location (set via /gomoku setlobby)
+lobby:
+  set: false
+  world: world
+  x: 0.0
+  y: 64.0
+  z: 0.0
+  yaw: 0.0
+  pitch: 0.0
+
+# Sidebar scoreboard
+# ------------------
+# Layouts live in the language files so they are bilingual and travel with
+# lang-version refreshes. Edit them under "scoreboard:" in:
+#   plugins/Gomoku/languages/zh_cn.yml
+#   plugins/Gomoku/languages/en.yml
+# Keys: scoreboard.enabled, scoreboard.update-interval,
+#       scoreboard.<lobby|game|spectator>.title / .lines
+
+# Lobby hotbar items
+# material also accepts old 1.8 names: NETHER_STAR / WORKBENCH / REDSTONE_BLOCK / ANVIL / CHEST
+# The room menu item name/lore come from the language files:
+# room-menu-item-name / room-menu-item-lore
+hotbar:
+  # Room menu (nether star): left- or right-click opens the 54-slot room list
+  menu:
+    # false = hide the room menu item (existing items are removed too)
+    enabled: true
+    slot: 0
+    material: NETHER_STAR
+  # Piece shop (chest)
+  shop:
+    # false = hide the piece shop item (existing items are removed too)
+    enabled: true
+    slot: 7
+
+# RapFi AI engine (only used by the 15x15 room "hell" difficulty; other levels use the built-in Java AI)
+ai:
+  engine:
+    enabled: false            # set to true after placing the exe
+    path: "plugins/Gomoku/engine/rapfi.exe" # replace with your RapFi engine path
+    timeout-ms: 3000          # per-move thinking limit; must be less than turn-seconds
+
+# Sound effects
+# sound  : Bukkit Sound enum name (e.g. BLOCK_WOODEN_DOOR_OPEN / BLOCK_STONE_PLACE / ENTITY_PLAYER_LEVELUP)
+# volume : volume (0 = mute this sound)
+# pitch  : pitch, also controls playback speed (0.5 = slower/lower, 1.0 = normal, 2.0 = faster/higher)
+sounds:
+  start:
+    sound: BLOCK_WOODEN_DOOR_OPEN
+    volume: 1.0
+    pitch: 1.0
+  place:
+    sound: BLOCK_STONE_PLACE
+    volume: 1.0
+    pitch: 0.8
+
+# Join message (replaces the vanilla join message)
+# lobby: notify players in the lobby world
+# room : notify during a match; default false, the match has its own game-start messages
+join-message:
+  lobby: true
+  room: false
+
+# Quit message (mirrors join-message)
+# lobby: notify the lobby world when a player quits
+# room : notify during a match; default false, the match has its own forfeit/cancel messages
+quit-message:
+  lobby: true
+  room: false
+
+# Protection options (only apply to the lobby world and room worlds)
+# prevent-death: cancel lethal damage, players never die
+# block-player-attacks: non-admins cannot attack/deal damage
+# prevent-player-damage: players take no damage at all
+protect:
+  prevent-death: true
+  block-player-attacks: true
+  prevent-player-damage: true
+
+# Room edit permissions
+# Rooms keep their original protection logic:
+# - during a match (PLAYING/WAITING) nobody can break/interact/place
+# - outside a match in a room world, only gomoku.admin can break/interact/place
+# Lobby protection is controlled by lobby-protect below
+#
+# Lobby world protection
+# Only players with gomoku.admin in creative mode can break/interact/place in the lobby
+lobby-protect:
+  enabled: true
+  # Requires the gomoku.admin permission
+  require-admin: true
+  # Requires creative mode
+  require-creative: true
+
+# Stats save delay (seconds), 0 = immediate
+stats:
+  save-delay-seconds: 10
+
+# ───────── Win celebration ─────────
+# Only triggers when a human player wins; AI wins/draws/timeouts do not trigger it.
+win-celebration:
+  enabled: true
+
+  # true  = spawn TNT only; other entity/block settings are ignored
+  # false = no TNT; read other.entity / other.block instead
+  #         if other is also empty, nothing is spawned
+  # The console logs the final choice in English; no error is thrown
+  tnt: true
+
+  # Position relative to the winner's feet; -1 = one block below
+  offset-y: -1
+  # Player range (radius): 0 = directly below; >0 = random horizontal offset within this radius
+  range: 0
+  # Spawn interval for TNT / other effects, in ticks
+  # 1 = every tick, 20 = once per second, 40 = every 2 seconds
+  interval-ticks: 40
+
+  # TNT-specific settings (active when tnt: true)
+  tnt-options:
+    ignited: true          # ignite by default
+    fuse-ticks: 20         # fuse time
+    break-blocks: false    # whether to break blocks (default false); the board/world stays intact
+    damage-entities: false # whether to damage entities (default false)
+
+  # Other entity/block settings (active when tnt: false)
+  # Separate from tnt-options; they do not affect each other
+  other:
+    # Entity celebration, e.g. FIREWORK; leave empty to disable
+    entity: FIREWORK
+    entity-range: 0        # entity spawn radius
+    entity-offset-y: 1     # entity height relative to the winner's feet
+    # Block celebration, e.g. TNT / REDSTONE_BLOCK; leave empty to disable
+    block: TNT
+    block-range: 0         # block spawn radius
+    block-offset-y: -1     # block height relative to the winner's feet
+
+  # Spawn fireworks at the four corners of the board when the winner wins
+  corner-fireworks:
+    enabled: true
+    # Corner firework spawn interval, in ticks
+    # 1 = every tick, 20 = once per second, 40 = every 2 seconds
+    interval-ticks: 40

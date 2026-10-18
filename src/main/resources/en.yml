@@ -1,0 +1,293 @@
+# Gomoku - Language File (English)
+# Color: &0-9 &a-f &l &o &n &r
+#
+# lang-version: bump this whenever the messages below change. On startup an
+# outdated file on the server is backed up to languages/backup/ and refreshed.
+# The colour-code layout mirrors zh_cn.yml key for key - keep the two in step.
+
+lang-version: 36
+prefix: "&8[&6Gomoku&8] &r"
+
+# Status labels
+status-ok: "&a[OK]"
+status-fail: "&c[X]"
+
+# Lobby
+lobby-set: "&aMain lobby set!\n&7  World: &f{w} &7X:&f{x} &7Y:&f{y} &7Z:&f{z} &7Yaw:&f{yaw}\n&7This world's respawn point now matches the lobby, so dying in a match returns here."
+lobby-not-set: "&cMain lobby is not set! Admin must use &e/gomoku setlobby &cfirst."
+lobby-returned: "&aReturned to lobby."
+return-countdown: "&eReturning to the lobby in {seconds}s"
+lobby-death: "&cYou died! Returning to lobby."
+lobby-broadcast-black: "&e{player} &7joined &e{room} &7as &0[Black]"
+lobby-broadcast-white: "&e{player} &7joined &e{room} &7as &f[White]"
+op-join-message: "&9If you like this plugin, click https://ifdian.net/a/1swzq to support me"
+join-broadcast: "&e{player} &7joined the server."
+quit-broadcast: "&e{player} &7left the server."
+lobby-build-deny: "&cCannot build rooms in the lobby world!"
+lobby-admin-deny: "&cThis command only works inside a room world!"
+lobby-spawn-deny: "&cCannot set player spawn in the lobby world!"
+lobby-clear-deny: "&cCannot delete the lobby world room!"
+
+# Permissions
+no-perm: "&cNo permission."
+unknown-sub: "&cUnknown command. Use &e/gomoku help&c."
+players-only: "&cPlayers only."
+
+# Room management
+room-exists: "&cRoom '{room}' already exists."
+room-not-found: "&cRoom '{room}' not found."
+room-added: "&aRoom '{room}' created!"
+room-cleared: "&aRoom '{room}' deleted."
+room-cheat-close: "&cThis game was closed by admin."
+room-busy: "&cRoom '{room}' still has players - wait until they leave."
+room-world-loaded: "&eWorld '{world}' is loaded. Use &a/gomoku &4admin&a add {world} &eto confirm import."
+room-add-failed: "&cFailed to create world!"
+room-add-creating: "&eCreating void world '{room}'..."
+room-build-header: "&6===== &eRoom {room} &6====="
+room-build-lobby: "&eLobby: {status}"
+room-build-spawn: "&eSpawn: {status}"
+room-build-board: "&eBoard: {status}"
+room-build-ready: "&aReady! Use &e/gomoku &4admin&a save {room} &ato enable it."
+room-build-hint: "&eNext: preview with &e/gomoku &4admin&a dish <size>&e, then build with &e/gomoku &4admin&a fill <line> <fill> <periphery>&e."
+room-build-spawn-missing: "&c>>> Set player spawn first: /gomoku &4admin&a playerspawn"
+room-dish-blocks: "&7Common blocks: OAK_PLANKS STONE_BRICKS QUARTZ_BLOCK DARK_OAK_PLANKS BLACKSTONE DEEPSLATE_BRICKS POLISHED_ANDESITE SMOOTH_STONE NETHER_BRICKS END_STONE_BRICKS PURPUR_BLOCK PRISMARINE_BRICKS"
+room-spawn-set: "&aPlayer spawn set! &7World: &f{room} &7X:&f{x} &7Y:&f{y} &7Z:&f{z}"
+
+# Admin
+admin-usage: "&eUsage: /gomoku &4admin&a <add|build|dish|fill|check|delete|playerspawn|save|clear|reload>\n&7Type &e/gomoku &7for the full list."
+admin-usage-short: "&eUsage: /gomoku &4admin&a {cmd} <room>"
+admin-build-usage: "&eUsage: /gomoku &4admin&a build <room>"
+admin-bad-size: "&cSize must be 15-64."
+admin-bad-number: "&cBad number: {input}"
+admin-dish-usage: "&e/gomoku &4admin&a dish <size> &7- wool border preview (gap=3)"
+admin-fill-usage: "&e/gomoku &4admin&a fill <line> <fill> <periphery> &7- build board (gap=3)"
+admin-fill-room-only: "&c/gomoku admin fill can only be used inside a room world."
+admin-chess-usage: "&e/gomoku &4admin&a check <black_name> <white_name>"
+admin-no-preview: "&cNo preview! Use &e/gomoku &4admin&a dish <size> first."
+admin-dish-start: "&aPreview: {size}x{size} gap={gap}"
+admin-fill-warn: "&6=============== WARNING ===============\n&6Filling {size}x{size} area!\n&6Line={line} Fill={fill} Border={periphery}\n&6Center={cx},{cz} Gap={gap}\n&6========================================"
+admin-fill-done: "&aBoard built! {size}x{size} gap={gap} line={line} fill={fill}"
+board-fill-replaced: "&7Removed &f{count} &7old board(s) in this world - only the new one remains."
+admin-fill-need-preview: "&cRun &e/gomoku admin dish <size> &cfirst - the board is only built where the preview is."
+admin-fill-same: "&cLine and fill blocks must be different!"
+admin-fill-blocked: "&cThat block is blacklisted!"
+admin-fill-air: "&cInvalid block type."
+admin-next-spawn: "&eNext: &e/gomoku &4admin&a playerspawn &ethen &e/gomoku &4admin&a save {room}"
+admin-next-save: "&eThen: &e/gomoku &4admin&a save {room}"
+admin-chess-set: "&aPieces set! &0{black} &7vs &f{white}"
+board-cached-hint: "&7Board &e#{no} &7cached - remove it with &e/gomoku admin delete {no} &7to clear"
+board-delete-none: "&cNo cached board to delete in this world."
+board-delete-notfound: "&cNo cached board with number &e#{no}&c."
+board-delete-done: "&aDeleted board &e#{no} &7center &f{x}, {y}, {z} &7- cleared {count} blocks."
+board-delete-current: "&eThat board was the one room '{room}' uses - the room is now marked as having no board."
+board-list-header: "&6--- Cached boards ---"
+board-list-line: "&e#{no} &7center &f{x}, {y}, {z} &7size &f{size}x{size}"
+board-list-empty: "&7No cached boards in this world."
+board-save-flushed: "&7Dropped {count} extra cached board(s), kept the last one."
+
+# Save
+room-save-no-board: "&cBoard not set!"
+room-save-no-spawn: "&cPlayer spawn not set!"
+room-save-done: "&aRoom '{room}' enabled! {size}"
+room-save-wrong-world: "&cYou must be in the room's world to save! Use &e/gomoku &4admin&a save {room}"
+room-add-must-save: "&cSave the current room first! &e/gomoku &4admin&a save {room}"
+
+# Reload
+reload-done: "&aReloaded: {items}"
+reload-info: "&7  Rooms: {rooms} | Lobby: {lobby}"
+reload-errors: "&cReload had errors!"
+reload-errors-detail: "&c{errors}"
+
+# Join / leave
+join-usage: "&eUsage: /gomoku join <room|auto>"
+join-not-found: "&cRoom '{room}' not found or not enabled."
+join-no-world: "&cWorld '{world}' is not loaded."
+join-ended: "&cGame ended. Wait for cleanup."
+join-success-black: "&aJoined '{room}' as &0[Black]&a. Waiting for opponent..."
+join-success-white: "&aJoined '{room}' as &f[White]&a. Match starting!"
+join-success-spectator: "&7Room full. Spectating '{room}'."
+join-already: "&cAlready in a game! Use &e/gomoku leave"
+join-waiting: "&eWaiting for opponent... &7(Redstone in hotbar to cancel)"
+spectate-usage: "&eUsage: /gomoku spectate <room>"
+spectate-not-started: "&cRoom '{room}' is not in a match, cannot spectate."
+spectate-joined: "&aNow spectating '{room}'. Use &e/gomoku leave &ato stop."
+
+leave-not-in-game: "&cNot in a game."
+leave-success: "&aYou left the match."
+
+# Game
+game-start: "&aGame started! &0{black} &7vs &f{white}"
+game-start-title-black: "&a&lYou go first! &7({black})"
+game-start-title-white: "&e&lYou go second! &7({white})"
+game-turn: "&e{player}'s turn ({color}&e)"
+game-turn-title: "&a&lYour turn"
+game-turn-actionbar: "&aTime &e{seconds}s &aleft"
+game-win: "&6========== &eGame Over &6==========\n&a&lWinner: &f{winner} &a(+1)\n&c&lLoser: &f{loser} &c(-1)\n&6================================"
+ai-level-title: "&8Choose AI difficulty"
+ai-level-1: "&aEasy"
+ai-level-2: "&eNormal"
+ai-level-3: "&6Hard"
+ai-level-4: "&cHell &7(RapFi)"
+ai-level-4-off: "&7Hell &8(RapFi offline)"
+ai-level-4-off-lore: "&7Install pbrain-rapfi and set ai.engine.enabled to true"
+ai-level-fallback: "&7RapFi not installed - using the built-in hardest level."
+ai-name: "&f-"
+join-ai-timeout: "&eNo human opponent after 5 minutes - starting an AI match."
+join-ai-start: "&eMatching against AI... &7you play black"
+join-matching: "&eMatching... &7waiting for an opponent"
+game-cancelled: "&eA player left before the first move. Match cancelled; returning to lobby."
+game-you-win: "&aYou win! &7Victory"
+game-you-lose: "&cYou lost. &7Defeat"
+game-you-win-title: "&a&lYou win"
+game-you-lose-title: "&c&lYou lost"
+game-draw: "&7========== &eGame Over &7==========\n&7Draw! Both +0\n&7================================"
+game-forfeit: "&e{player} left the match."
+game-invalid-move: "&cInvalid move - not your turn or cell occupied."
+exit-item-name: "&c&lLeave match"
+exit-item-lore: "&7Right-click twice to leave (5s apart)"
+exit-confirm: "&eLeave the match? &7Right-click again after 5 seconds"
+exit-too-fast: "&cToo early - wait 5 seconds."
+game-out-of-board: "&cThat is outside the board - place stones on the board only."
+game-spectator: "&7Spectating - cannot place stones."
+game-timeout: "&c{player} ran out of time! Round void - no points awarded."
+
+# Stats
+stats-offline: "&cPlayer not online."
+stats-no-data: "&7No stats for {player}."
+stats-header: "&6=== {player} Gomoku Stats ==="
+stats-detail: "&eLv.{level}  &aW:{wins}  &cL:{losses}  &7D:{draws}"
+stats-winrate: "&eWR:{winrate}  &6Score:{score}"
+
+# ===== Sidebar scoreboard =====
+# Three layouts: lobby (not in a match) / game (playing) / spectator (watching)
+# Each line supports %player% and every %gomoku_xxx% placeholder; "" is a blank row
+# Each language can use its own layout just by editing its file
+scoreboard:
+  enabled: true
+  # Refresh interval in ticks (20 = 1 second)
+  update-interval: 20
+  lobby:
+    title: "&6&lGomoku &7- &fLobby"
+    lines:
+      - "&7Player: &f%player%"
+      - "&7Level: &eLv.%gomoku_level%"
+      - "&aW:%gomoku_wins% &cL:%gomoku_losses% &7D:%gomoku_draws%"
+      - "&7Win rate: &f%gomoku_winrate%"
+      - ""
+      - "&7Matches running: &f%gomoku_playing_room_count%"
+      - ""
+      - "&e/gomoku join auto"
+      - "&7Click to join a match"
+  game:
+    title: "&6&lGomoku &7- &f%gomoku_room%"
+    lines:
+      - "&7Room: &f%gomoku_room%"
+      - "&7You: %gomoku_color%"
+      - "&7Opponent: &f%gomoku_opponent%"
+      - ""
+      - "&7Now: &e%gomoku_countdown%"
+      - "&7Stones: &f%gomoku_move_count%"
+      - ""
+      - "&e/gomoku leave"
+      - "&7Leave the match"
+  spectator:
+    title: "&6&lGomoku &7- &fSpectate &7- &f%gomoku_room%"
+    lines:
+      - "&7Room: &f%gomoku_room%"
+      - "&0Black: &f%gomoku_black_player%"
+      - "&fWhite: &f%gomoku_white_player%"
+      - ""
+      - "&7Now: &e%gomoku_countdown%"
+      - "&7Stones: &f%gomoku_move_count%"
+      - ""
+      - "&e/gomoku leave"
+      - "&7Stop spectating"
+
+# Edit-mode board scanner (wooden axe)
+axe-given: "&6[Board Scanner Axe] &7Usage:\n&7  &eLeft-click &7any block on a grid line → auto-detect the whole board\n&7  &eRight-click &7cancel\n&7  No block breaking or block interaction while held\n&7  Result goes straight into the room - then &e/gomoku admin playerspawn &7and &e/gomoku admin save <room>"
+axe-hint: "&eLeft-click &7detect board &8| &eRight-click &7cancel &8| &7no block breaking while held"
+axe-cancel: "&7Detection cancelled."
+axe-no-room: "&cBoard detection only works inside a room world."
+axe-scan-air: "&cClick a block that is part of the board."
+axe-scan-not-line: "&cThat is not a grid line - click one of the board's lines (the outer ring counts)."
+axe-scan-no-fill: "&cNo fill block found - the board must consist of lines plus fill."
+axe-scan-too-big: "&cToo many blocks of that type connected - click the grid line itself."
+axe-scan-no-line: "&cNo grid line found - only boards with grid lines are supported."
+axe-scan-no-cell: "&cCould not measure the cell spacing, check the grid lines."
+axe-scan-size: "&cThe detected board is not square, or is outside 2-64 cells."
+axe-scan-ok: "&aDetected! &7size &f{size}x{size} &7spacing &f{interval}\n&7line &f{line} &7fill &f{fill}\n&7center &f{x}, {z} &7board layer &f{y}\n&7Applied to room &e{room}&7, set the player spawn, then save."
+
+# Board scanner axe item
+edit-axe-name: "&e&lBoard Scanner Axe"
+edit-axe-lore-1: "&7Left-click: a cell's centre fill block"
+edit-axe-lore-2: "&7      auto-detects the whole board"
+edit-axe-lore-3: "&7Right-click: cancel detection"
+edit-axe-lore-4: "&8(no block breaking while held)"
+
+# Piece shop
+piece-in-game: "&cCannot change pieces during a match."
+gui-in-game: "&cCannot open the room menu during a match."
+piece-buy-success: "&aUnlocked and equipped: {black} &7/ {white} &7(-{cost} points)"
+piece-equip-success: "&aEquipped: {black} &7/ {white}"
+piece-no-points: "&cNot enough points! Need &e{cost}&c, you have &e{points}&c."
+piece-entry-name: "{black} &7/ {white}"
+piece-lore-black: "&7Black: {name}"
+piece-lore-white: "&7White: {name}"
+piece-lore-cost: "&7Price: &e{cost} &7points"
+piece-lore-selected: "&a✔ Equipped"
+piece-lore-owned: "&eClick to equip"
+piece-lore-buy: "&aClick to unlock and equip"
+piece-lore-poor: "&cNot enough points"
+
+# Piece shop item/menu
+piece-menu-name: "&e&lPiece Shop"
+piece-menu-title: "&8Piece Shop  &7Available: &e{points}"
+piece-menu-lore:
+  - "&7Left / right click to open the shop"
+piece-default-black: "&0Black Stone"
+piece-default-white: "&fWhite Stone"
+
+# Placeholder colour text
+color-black: "Black"
+color-white: "White"
+color-spectator: "Spectator"
+
+# PlaceholderAPI
+# format of %gomoku_countdown%: piece name + player name + seconds left
+papi-countdown: "{piece} {player} - {seconds}s left"
+
+# Room menu (nether star)
+menu-title: "&8Rooms &7total &f{rooms}"
+room-menu-item-name: "&b&lRoom Menu"
+room-menu-item-lore:
+  - "&7Left / right click to open the room list"
+menu-room-free-lore: "&aFree &7- click to join"
+menu-room-playing-lore: "&cIn progress &7- click to spectate"
+menu-room-players-lore: "&7Players: &f{count}"
+menu-room-size-lore: "&7Board: &f{size}x{size}"
+menu-auto-name: "&e&lAuto match"
+menu-auto-lore: "&7Click to join a free room"
+menu-empty-name: "&7No rooms yet"
+menu-empty-lore: "&7An admin has not created any room"
+# Help
+help-header: "&6===== &eGomoku &6====="
+help-admin: "&6--- Admin commands ---\n&f1.&e /gomoku setlobby &7set the lobby (and this world's respawn)\n&f2.&e/gomoku &4admin&a add <room> &7create a room world\n&f3.&e/gomoku &4admin&a build <room> &7enter room edit mode\n&f4.&e/gomoku &4admin&a dish <size> &7preview the board (15-64)\n&f5.&e/gomoku &4admin&a fill <line> <fill> <periphery> &7build the board\n&f6.&e/gomoku &4admin&a check <black_name> <white_name> &7set pieces (hotbar slots 1-2)\n&f7.&e/gomoku &4admin&a playerspawn &7set the player spawn\n&f8.&e/gomoku &4admin&a save <room> &7save and enable\n&f9.&e/gomoku &4admin&a clear <room> &7delete the room\n&f10.&e/gomoku &4admin&a delete [no|list] &7delete a cached board\n&f11.&e/gomoku &4admin&a reload &7reload config"
+help-player: "&e/gomoku &ajoin <room|auto>  &e/gomoku &aleave  &e/gomoku &astats [player]  &e/gomoku &aspectate <room>  &e/gomoku &agui  &e/gomoku &apieceshop"
+help-rules: "&6--- Rules ---\n&7Each move has &e60&7s (&eturn-seconds &7in &econfig.yml&7)\n&7Timeout voids the round - &cno points for either side\n&7Dying in a match returns you to the lobby\n&7Aim at a board cell and &eleft-click &7to move"
+
+# Debug output
+debug-header: "&8&m-------- &eGomoku Debug &8&m--------"
+debug-locale: "&7locale: &f{locale}"
+debug-exit-item: "&7exit-item-name: &f{value}"
+debug-exit-confirm: "&7exit-confirm: &f{value}"
+debug-ai-name: "&7ai-name: &f{value}"
+debug-no-room: "&7Room: &cnot a room world"
+debug-room: "&7Room: &f{room} &7enabled={enabled} boardSet={boardSet}"
+debug-board: "&7Board: &f{size}x{size} &7int={interval} &7y={y} &7center={x},{z}"
+debug-blocks: "&7Line/fill/periphery: &f{line} &7/ &f{fill} &7/ &f{periphery}"
+debug-distance: "&7Distance to board centre: &f{distance} &7blocks"
+debug-cell: "&7Cell under you: &f{cell}"
+debug-cell-none: "rejected (not on the board)"
+debug-session: "&7inGame: &f{inGame} &7session: &f{session} &7AI white: &f{ai}"
+debug-none: "none"
+debug-footer: "&8&m--------------------------------"

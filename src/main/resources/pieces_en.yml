@@ -1,0 +1,67 @@
+# ===== Piece Shop Configuration =====
+#
+# Each entry is a PAIR of black/white pieces: both black and white are
+# required, and their materials must differ (otherwise the entry is ignored
+# and a warning is printed to the console).
+#
+# cost is the number of points needed. Points = wins × 3 + draws - points already spent.
+# cost: 0 means every player owns it by default.
+#
+# Priority: if a room set its pieces with /gomoku admin check, the room's
+# settings always win and the look chosen here has no effect in that room.
+#
+# Use Bukkit Material names directly (BLACK_WOOL / QUARTZ_BLOCK ...).
+
+# Shop entry: placed in the second-to-last hotbar slot
+# The item name/lore and GUI title come from the language files:
+#   languages/zh_cn.yml / en.yml -> piece-menu-name / piece-menu-lore / piece-menu-title
+menu:
+  slot: 7                      # 0 = slot 1, 7 = slot 8 (second-to-last), 8 = last slot
+  material: CHEST
+  size: 27                     # must be a multiple of 9 (9~54)
+
+pieces:
+  classic:
+    cost: 0
+    black:
+      material: BLACK_WOOL
+      name: "&0Black Stone"
+    white:
+      material: WHITE_WOOL
+      name: "&fWhite Stone"
+
+  concrete:
+    cost: 20
+    black:
+      material: BLACK_CONCRETE
+      name: "&0Ink Stone"
+    white:
+      material: WHITE_CONCRETE
+      name: "&fPorcelain"
+
+  crystal:
+    cost: 45
+    black:
+      material: BLACK_STAINED_GLASS
+      name: "&0Black Crystal"
+    white:
+      material: WHITE_STAINED_GLASS
+      name: "&fCrystal"
+
+  gem:
+    cost: 80
+    black:
+      material: COAL_BLOCK
+      name: "&0Dark Iron"
+    white:
+      material: QUARTZ_BLOCK
+      name: "&fWhite Jade"
+
+  metal:
+    cost: 120
+    black:
+      material: BLACKSTONE
+      name: "&0Black Rock"
+    white:
+      material: SMOOTH_QUARTZ
+      name: "&fWhite Rock"

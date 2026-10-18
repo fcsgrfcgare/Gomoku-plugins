@@ -1,0 +1,66 @@
+# ===== 棋子商店配置 =====
+#
+# 每个条目是"一对"黑白棋子: 必须同时给出 black 和 white,
+# 且两者的 material 不能相同 (否则该条目会被忽略并在控制台告警)。
+#
+# cost 是兑换所需积分。积分 = 胜场×3 + 平局 - 已经花掉的积分。
+# cost: 0 表示所有人默认拥有。
+#
+# 优先级: 房间若用 /gomoku admin check 设置过棋子, 一律使用房间的设置,
+# 这里选择的外观在该房间不生效。
+#
+# 可用方块名直接填 Bukkit Material 名 (BLACK_WOOL / QUARTZ_BLOCK ...)。
+
+# 商店入口: 放在玩家快捷栏的"倒数第二格"
+# 商店物品的名称/说明/界面标题由语言文件控制:
+#   languages/zh_cn.yml / en.yml -> piece-menu-name / piece-menu-lore / piece-menu-title
+menu:
+  slot: 7                      # 0 = 第 1 格, 7 = 第 8 格(倒数第二格), 8 = 最后格
+  material: CHEST
+  size: 27                     # 必须是 9 的倍数 (9~54)
+
+pieces:
+  classic:
+    cost: 0
+    black:
+      material: BLACK_WOOL
+      name: "&0黑子"
+    white:
+      material: WHITE_WOOL
+      name: "&f白子"
+
+  concrete:
+    cost: 20
+    black:
+      material: BLACK_CONCRETE
+      name: "&0墨石"
+    white:
+      material: WHITE_CONCRETE
+      name: "&f白瓷"
+
+  crystal:
+    cost: 45
+    black:
+      material: BLACK_STAINED_GLASS
+      name: "&0黑晶"
+    white:
+      material: WHITE_STAINED_GLASS
+      name: "&f水晶"
+
+  gem:
+    cost: 80
+    black:
+      material: COAL_BLOCK
+      name: "&0玄铁"
+    white:
+      material: QUARTZ_BLOCK
+      name: "&f白玉"
+
+  metal:
+    cost: 120
+    black:
+      material: BLACKSTONE
+      name: "&0黑岩"
+    white:
+      material: SMOOTH_QUARTZ
+      name: "&f白岩"

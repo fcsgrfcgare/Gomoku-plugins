@@ -1,0 +1,292 @@
+# Gomoku 五子棋 - 语言文件 (简体中文)
+# 颜色码: &0-9 颜色 / &a-f 颜色 / &l 粗体 / &o 斜体 / &n 下划线 / &r 重置
+#
+# lang-version: 每次修改本文件后 +1. 插件启动时发现服务器上的文件版本更低,
+# 会把旧文件备份到 languages/backup/ 后自动刷新, 无需手动删除.
+
+lang-version: 36
+prefix: "&8[&6Gomoku&8] &r"
+
+# 状态标签
+status-ok: "&a[OK]"
+status-fail: "&c[X]"
+
+# 大厅
+lobby-set: "&a大厅已设置!\n&7  世界: &f{w} &7X:&f{x} &7Y:&f{y} &7Z:&f{z} &7朝向:&f{yaw}\n&7该世界的重生点已同步到大厅坐标, 对局中死亡会回到这里."
+lobby-not-set: "&c请先使用 &e/gomoku setlobby &c设置大厅!"
+lobby-returned: "&a已返回大厅."
+return-countdown: "&e{seconds} &7秒后返回大厅"
+lobby-death: "&c你死了! 返回大厅."
+lobby-broadcast-black: "&e{player} &7加入了 &e{room} &7作为 &0[黑方]"
+lobby-broadcast-white: "&e{player} &7加入了 &e{room} &7作为 &f[白方]"
+op-join-message: "&9如果你喜欢本插件请点击-＞https://ifdian.net/a/1swzq 为我发电吧"
+join-broadcast: "&e{player} &7加入了服务器."
+quit-broadcast: "&e{player} &7离开了服务器."
+lobby-build-deny: "&c不能在大厅世界建造房间!"
+lobby-admin-deny: "&c此指令只能在房间世界中使用!"
+lobby-spawn-deny: "&c不能在大厅世界设置玩家出生点!"
+lobby-clear-deny: "&c不能删除大厅世界的房间!"
+
+# 权限
+no-perm: "&c无权限."
+unknown-sub: "&c未知命令. 输入 &e/gomoku help &c查看帮助."
+players-only: "&c仅玩家可用."
+
+# 房间管理
+room-exists: "&c房间 '{room}' 已存在."
+room-not-found: "&c房间 '{room}' 不存在."
+room-added: "&a房间 '{room}' 已创建!"
+room-cleared: "&a房间 '{room}' 已删除."
+room-cheat-close: "&c管理员关闭了此游戏."
+room-busy: "&c房间 '{room}' 里还有玩家, 请等他们离开后再操作."
+room-world-loaded: "&e世界 '{world}' 已加载. 使用 &a/gomoku &4admin&a add {world} &e确认导入."
+room-add-failed: "&c创建世界失败!"
+room-add-creating: "&e正在创建虚空世界 '{room}'..."
+room-build-header: "&6===== &e房间 {room} &6====="
+room-build-lobby: "&e大厅: {status}"
+room-build-spawn: "&e出生点: {status}"
+room-build-board: "&e棋盘: {status}"
+room-build-ready: "&a已就绪! 使用 &e/gomoku &4admin&a save {room} &a保存并启用."
+room-build-hint: "&e下一步: &e/gomoku &4admin&a dish <大小> &e预览棋盘, 再用 &e/gomoku &4admin&a fill <线> <填充> <外围> &e生成."
+room-build-spawn-missing: "&c>>> 请先设置出生点: /gomoku &4admin&a playerspawn"
+room-dish-blocks: "&7常用方块: OAK_PLANKS STONE_BRICKS QUARTZ_BLOCK DARK_OAK_PLANKS BLACKSTONE DEEPSLATE_BRICKS POLISHED_ANDESITE SMOOTH_STONE NETHER_BRICKS END_STONE_BRICKS PURPUR_BLOCK PRISMARINE_BRICKS"
+room-spawn-set: "&a出生点已设置! &7世界: &f{room} &7X:&f{x} &7Y:&f{y} &7Z:&f{z}"
+
+# 管理员指令
+admin-usage: "&e用法: /gomoku &4admin&a <add|build|dish|fill|check|delete|playerspawn|save|clear|reload>\n&7输入 &e/gomoku &7查看完整说明."
+admin-usage-short: "&e用法: /gomoku &4admin&a {cmd} <房间>"
+admin-build-usage: "&e用法: /gomoku &4admin&a build <房间>"
+admin-bad-size: "&c大小范围 15-64."
+admin-bad-number: "&c无效数字: {input}"
+admin-dish-usage: "&e/gomoku &4admin&a dish <大小> &7- 羊毛边框预览 (间距=3)"
+admin-fill-usage: "&e/gomoku &4admin&a fill <线> <填充> <外围> &7- 建造棋盘 (间距=3)"
+admin-fill-room-only: "&c/gomoku &4admin&a fill &c只能在房间世界里使用."
+admin-chess-usage: "&e/gomoku &4admin&a check <黑子名> <白子名>"
+admin-no-preview: "&c没有预览框架! 先用 &e/gomoku &4admin&a dish <大小>"
+admin-dish-start: "&a预览中: {size}x{size} 间距={gap}"
+admin-fill-warn: "&6=============== 警告 ===============\n&6将在 {size}x{size} 区域填充方块!\n&6线={line} 填充={fill} 外围={periphery}\n&6中心={cx},{cz} 间距={gap}\n&6===================================="
+admin-fill-done: "&a棋盘已建造! {size}x{size} 间距={gap} 线={line} 填充={fill}"
+board-fill-replaced: "&7已清除该世界里 &f{count} &7块旧棋盘, 现在只保留这一块."
+admin-fill-need-preview: "&c请先用 &e/gomoku admin dish <大小> &c生成预览, 棋盘只会在预览的位置生成."
+admin-fill-same: "&c线和填充不能是同一种方块!"
+admin-fill-blocked: "&c该方块被禁用!"
+admin-fill-air: "&c无效方块类型."
+admin-next-spawn: "&e下一步: &e/gomoku &4admin&a playerspawn &e然后 &e/gomoku &4admin&a save {room}"
+admin-next-save: "&e然后: &e/gomoku &4admin&a save {room}"
+admin-chess-set: "&a棋子已设置! &0{black} &7vs &f{white}"
+board-cached-hint: "&7已缓存棋盘 &e#{no} &7- 可用 &e/gomoku admin delete {no} &7移除"
+board-delete-none: "&c当前世界没有缓存的棋盘可删除."
+board-delete-notfound: "&c没有编号为 &e#{no} &c的棋盘记录."
+board-delete-done: "&a已删除棋盘 &e#{no} &7中心 &f{x}, {y}, {z} &7清除 {count} 个方块."
+board-delete-current: "&e该棋盘正是房间 '{room}' 正在使用的, 已重置为未设置棋盘状态."
+board-list-header: "&6--- 缓存的棋盘 ---"
+board-list-line: "&e#{no} &7中心 &f{x}, {y}, {z} &7大小 &f{size}x{size}"
+board-list-empty: "&7当前世界没有缓存棋盘."
+board-save-flushed: "&7已清理 {count} 个多余棋盘缓存, 只保留最后一次."
+
+# 保存房间
+room-save-no-board: "&c棋盘未设置!"
+room-save-no-spawn: "&c出生点未设置!"
+room-save-done: "&a房间 '{room}' 已启用! {size}"
+room-save-wrong-world: "&c请在你创建的房间世界中使用 &e/gomoku &4admin&a save {room}"
+room-add-must-save: "&c请先保存当前房间再使用 add! &e/gomoku &4admin&a save {room}"
+
+# 重载
+reload-done: "&a已重载: {items}"
+reload-info: "&7  房间数: {rooms} | 大厅: {lobby}"
+reload-errors: "&c重载出错！"
+reload-errors-detail: "&c{errors}"
+
+# 加入 / 退出对局
+join-usage: "&e用法: /gomoku join <房间|auto>"
+join-not-found: "&c房间 '{room}' 未找到或未启用."
+join-no-world: "&c世界 '{world}' 未加载."
+join-ended: "&c游戏已结束. 等待清理."
+join-success-black: "&a加入 '{room}' 作为 &0[黑方]&a. 等待对手..."
+join-success-white: "&a加入 '{room}' 作为 &f[白方]&a. 比赛开始!"
+join-success-spectator: "&7房间已满. 正在观战 '{room}'."
+join-already: "&c已在游戏中! 先用 &e/gomoku leave"
+join-waiting: "&e等待对手加入... &7(快捷栏红石右键取消)"
+spectate-usage: "&e用法: /gomoku spectate <房间>"
+spectate-not-started: "&c房间 '{room}' 未在对战中, 无法旁观."
+spectate-joined: "&a已进入房间 '{room}' 观战, 输入 &e/gomoku leave &a退出."
+
+leave-not-in-game: "&c不在游戏中."
+leave-success: "&a已退出游戏."
+
+# 对局
+game-start: "&a游戏开始! &0{black} &7vs &f{white}"
+game-start-title-black: "&a&l你先手! &7({black})"
+game-start-title-white: "&e&l你后手! &7({white})"
+game-turn: "&e{player} 的回合 ({color}&e)"
+game-turn-title: "&a&l该你下棋了"
+game-turn-actionbar: "&a剩余 &e{seconds} &a秒"
+game-win: "&6========== &e游戏结束 &6==========\n&a&l胜者: &f{winner} &a(+1)\n&c&l败者: &f{loser} &c(-1)\n&6================================"
+ai-level-title: "&8选择 AI 难度"
+ai-level-1: "&a简单"
+ai-level-2: "&e普通"
+ai-level-3: "&6困难"
+ai-level-4: "&c地狱 &7(RapFi)"
+ai-level-4-off: "&7地狱 &8(RapFi 未接入)"
+ai-level-4-off-lore: "&7放好 pbrain-rapfi 并把 config.yml 的 ai.engine.enabled 改成 true"
+ai-level-fallback: "&7RapFi 未安装, 使用内置最高难度."
+ai-name: "&f-"
+join-ai-timeout: "&e等待 5 分钟仍未匹配到玩家, 自动开始 AI 对局."
+join-ai-start: "&e正在匹配 AI 对手... &7你执黑先行"
+join-matching: "&e正在匹配房间... &7等待对手加入"
+game-cancelled: "&e有玩家在落子前退出, 对局取消, 返回大厅."
+game-you-win: "&a你赢了! &7本局胜利"
+game-you-lose: "&c你输了. &7本局失败"
+game-you-win-title: "&a&l你赢了"
+game-you-lose-title: "&c&l你输了"
+game-draw: "&7========== &e游戏结束 &7==========\n&7平局! 双方+0\n&7================================"
+game-forfeit: "&e{player} 离开了对局."
+game-invalid-move: "&c无效落子 - 不是你的回合或位置被占."
+exit-item-name: "&c&l退出对局"
+exit-item-lore: "&7右键两次确认退出 (5 秒后可再点)"
+exit-confirm: "&4&l确定要退出吗? &7 5 秒后再次右键确认"
+exit-too-fast: "&c太早了, 请等 5 秒后再点."
+game-out-of-board: "&c超出棋盘范围了, 只能在棋盘格子上落子."
+game-spectator: "&7观战模式 - 无法落子."
+game-timeout: "&c{player} 超时! 本局作废, 双方均不得分."
+
+# 战绩
+stats-offline: "&c玩家不在线."
+stats-no-data: "&7{player} 没有战绩数据."
+stats-header: "&6=== {player} 五子棋战绩 ==="
+stats-detail: "&eLv.{level}  &aW:{wins}  &cL:{losses}  &7D:{draws}"
+stats-winrate: "&eWR:{winrate}  &6Score:{score}"
+
+# ===== 侧栏记分板 =====
+# 三套布局: lobby(不在对局) / game(对局中) / spectator(观战中)
+# 每行支持 %player% 和全部 %gomoku_xxx% 占位符; "" 表示空行
+# 想让某个语言用不同布局, 直接改对应语言文件即可
+scoreboard:
+  enabled: true
+  # 刷新间隔 (tick, 20 = 1 秒)
+  update-interval: 20
+  lobby:
+    title: "&6&lGomoku &7- &f大厅"
+    lines:
+      - "&7玩家: &f%player%"
+      - "&7等级: &eLv.%gomoku_level%"
+      - "&a胜:%gomoku_wins% &c负:%gomoku_losses% &7平:%gomoku_draws%"
+      - "&7胜率: &f%gomoku_winrate%"
+      - ""
+      - "&7进行中对局: &f%gomoku_playing_room_count%"
+      - ""
+      - "&e/gomoku join auto"
+      - "&7点击加入对局"
+  game:
+    title: "&6&lGomoku &7- &f%gomoku_room%"
+    lines:
+      - "&7房间: &f%gomoku_room%"
+      - "&7你: %gomoku_color%"
+      - "&7对手: &f%gomoku_opponent%"
+      - ""
+      - "&7当前: &e%gomoku_countdown%"
+      - "&7已落子: &f%gomoku_move_count%"
+      - ""
+      - "&e/gomoku leave"
+      - "&7退出对局"
+  spectator:
+    title: "&6&lGomoku &7- &f观战 &7- &f%gomoku_room%"
+    lines:
+      - "&7房间: &f%gomoku_room%"
+      - "&0黑方: &f%gomoku_black_player%"
+      - "&f白方: &f%gomoku_white_player%"
+      - ""
+      - "&7当前: &e%gomoku_countdown%"
+      - "&7已落子: &f%gomoku_move_count%"
+      - ""
+      - "&e/gomoku leave"
+      - "&7退出观战"
+
+# 编辑模式棋盘识别斧
+axe-given: "&6[棋盘识别斧] &7使用方法:\n&7  &e左键 &7点击棋盘井字线上任意一块 → 自动识别整块棋盘\n&7  &e右键 &7取消识别\n&7  手持时不破坏方块、不触发方块交互\n&7  识别结果直接写入房间, 接着 &e/gomoku admin playerspawn &7再 &e/gomoku admin save <房间>"
+axe-hint: "&e左键 &7识别棋盘 &8| &e右键 &7取消 &8| &7手持时不破坏方块"
+axe-cancel: "&7已取消识别."
+axe-no-room: "&c只能在房间世界里识别棋盘."
+axe-scan-air: "&c请点击棋盘格子上的方块."
+axe-scan-not-line: "&c这里不是井字线, 请点击棋盘上的线 (包括最外围那圈线)."
+axe-scan-no-fill: "&c没找到格子的填充方块, 请确认棋盘由线+填充组成."
+axe-scan-too-big: "&c这一片同材质方块太多了, 请点击棋盘井字线本身."
+axe-scan-no-line: "&c没找到格子的井字线, 目前只支持带井字线的棋盘."
+axe-scan-no-cell: "&c没能量出格子间距, 请确认棋盘有完整的井字线."
+axe-scan-size: "&c棋盘不是正方形 有线条空位, 或尺寸超出 2-64."
+axe-scan-ok: "&a识别成功! &7尺寸 &f{size}x{size} &7间距 &f{interval}\n&7线 &f{line} &7填充 &f{fill}\n&7中心 &f{x}, {z} &7棋盘层 &f{y}\n&7已写入房间 &e{room}&7, 接着设置出生点再保存."
+
+# 棋盘识别斧物品
+edit-axe-name: "&e&l棋盘识别斧"
+edit-axe-lore-1: "&7左键: 点击格子中间的填充方块"
+edit-axe-lore-2: "&7      自动识别整块棋盘"
+edit-axe-lore-3: "&7右键: 取消识别"
+edit-axe-lore-4: "&8(手持时不破坏方块)"
+
+# 棋子商店
+piece-in-game: "&c对局中不能更换棋子."
+gui-in-game: "&c对局中不能打开房间菜单."
+piece-buy-success: "&a已兑换并装备: {black} &7/ {white} &7(-{cost} 积分)"
+piece-equip-success: "&a已装备: {black} &7/ {white}"
+piece-no-points: "&c积分不足! 需要 &e{cost}&c, 当前 &e{points}&c."
+piece-entry-name: "{black} &7/ {white}"
+piece-lore-black: "&7黑方: {name}"
+piece-lore-white: "&7白方: {name}"
+piece-lore-cost: "&7价格: &e{cost} &7积分"
+piece-lore-selected: "&a✔ 已装备"
+piece-lore-owned: "&e点击装备"
+piece-lore-buy: "&a点击兑换并装备"
+piece-lore-poor: "&c积分不足"
+
+# 棋子商店界面/物品
+piece-menu-name: "&e&l棋子商店"
+piece-menu-title: "&8棋子商店  &7可用: &e{points}"
+piece-menu-lore:
+  - "&7左键 / 右键 打开商店"
+piece-default-black: "&0黑子"
+piece-default-white: "&f白子"
+
+# 占位符颜色文本
+color-black: "黑子"
+color-white: "白子"
+color-spectator: "观战"
+
+# PlaceholderAPI 占位符格式
+# %gomoku_countdown% 的格式: 棋子名 + 玩家名 + 剩余秒数
+papi-countdown: "{piece} {player} 剩余{seconds}s"
+
+# 房间菜单 (下界之星)
+menu-title: "&8房间列表 &7共 &f{rooms} 个"
+room-menu-item-name: "&b&l房间菜单"
+room-menu-item-lore:
+  - "&7左键 / 右键 打开房间列表"
+menu-room-free-lore: "&a空闲 &7- 点击加入对局"
+menu-room-playing-lore: "&c对局中 &7- 点击进入观战"
+menu-room-players-lore: "&7人数: &f{count}"
+menu-room-size-lore: "&7棋盘: &f{size}x{size}"
+menu-auto-name: "&e&l自动匹配"
+menu-auto-lore: "&7点击快速加入一个空闲房间"
+menu-empty-name: "&7暂无房间"
+menu-empty-lore: "&7管理员还没有创建任何房间"
+# 帮助
+help-header: "&6===== &eGomoku 五子棋 &6====="
+help-admin: "&6--- 管理员指令 ---\n&f1.&e /gomoku setlobby &7设置大厅 (并同步该世界重生点)\n&f2.&e/gomoku &4admin&a add <房间> &7创建房间世界\n&f3.&e/gomoku &4admin&a build <房间> &7进入房间编辑\n&f4.&e/gomoku &4admin&a dish <大小> &7预览棋盘 (15-64)\n&f5.&e/gomoku &4admin&a fill <线> <填充> <外围> &7生成棋盘\n&f6.&e/gomoku &4admin&a check <黑子名> <白子名> &7设置棋子 (用快捷栏 1/2 格)\n&f7.&e/gomoku &4admin&a playerspawn &7设置玩家出生点\n&f8.&e/gomoku &4admin&a save <房间> &7保存并启用\n&f9.&e/gomoku &4admin&a clear <房间> &7删除房间\n&f10.&e/gomoku &4admin&a delete [序号|list] &7删除缓存棋盘\n&f11.&e/gomoku &4admin&a reload &7重载配置"
+help-player: "&e/gomoku &ajoin <房间|auto>  &e/gomoku &aleave  &e/gomoku &astats [玩家]  &e/gomoku &aspectate <房间>  &e/gomoku &agui  &e/gomoku &apieceshop"
+help-rules: "&6--- 规则 ---\n&7每步限时 &e60 &7秒 (&econfig.yml &7的 &eturn-seconds&7)\n&7超时本局作废, &c双方均不得分\n&7对局中死亡会自动回到大厅\n&7棋子: 瞄准棋盘格 &e左键 &7落子"
+
+# 调试输出
+debug-header: "&8&m-------- &eGomoku Debug &8&m--------"
+debug-locale: "&7locale: &f{locale}"
+debug-exit-item: "&7exit-item-name: &f{value}"
+debug-exit-confirm: "&7exit-confirm: &f{value}"
+debug-ai-name: "&7ai-name: &f{value}"
+debug-no-room: "&7房间: &c当前世界不是房间"
+debug-room: "&7房间: &f{room} &7enabled={enabled} boardSet={boardSet}"
+debug-board: "&7棋盘: &f{size}x{size} &7int={interval} &7y={y} &7center={x},{z}"
+debug-blocks: "&7线/填充/外围: &f{line} &7/ &f{fill} &7/ &f{periphery}"
+debug-distance: "&7你离棋盘中心: &f{distance} &7格"
+debug-cell: "&7脚下换算格子: &f{cell}"
+debug-cell-none: "拒绝(不在棋盘上)"
+debug-session: "&7inGame: &f{inGame} &7会话: &f{session} &7AI白: &f{ai}"
+debug-none: "无"
+debug-footer: "&8&m--------------------------------"

@@ -1,0 +1,20 @@
+name: Gomoku
+api-version: '1.13'
+version: '1.1.4'
+author: syk
+description: Gomoku (五子棋) minigame plugin
+main: com.syk.gomoku.GomokuPlugin
+softdepend: [Multiverse-Core, PlaceholderAPI]
+
+commands:
+  gomoku:
+    description: Gomoku (五子棋) - create/manage rooms, play gomoku
+    usage: /gomoku <help|setlobby|join <room>|spectate <room>|leave|stats|gui|pieceshop|admin <add|build|dish|fill|check|delete|playerspawn|save|clear|reload|debug>>
+
+permissions:
+  gomoku.admin:
+    description: Admin commands for room management
+    default: op
+  gomoku.use:
+    description: Player commands (join/leave/stats)
+    default: true
