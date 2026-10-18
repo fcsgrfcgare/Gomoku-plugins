@@ -36,7 +36,7 @@ tasks.withType<JavaCompile> {
 }
 
 tasks.jar {
-    archiveFileName.set("Gomoku-1.1.4.jar")
+    archiveFileName.set("Gomoku.jar")
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     // Bundle SQLite/Gson into the plugin jar: no SpigotLibraryLoader downloads.
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
