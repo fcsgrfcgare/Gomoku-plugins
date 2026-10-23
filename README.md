@@ -80,13 +80,13 @@ hotbar:
 - `src/main/java`：插件源码
 - `src/main/resources`：默认配置、语言文件、`plugin.yml`
 - `MODRINTH_DESCRIPTION.md`：完整使用说明（上方英文，下方中文）
-- `LICENSE`：AGPL-3.0
+- `LICENSE`：GPL-3.0
 - `THIRD_PARTY_NOTICES.md`：内置依赖许可说明
 
 > 本仓库不包含测试服务器目录、世界数据、第三方引擎源码或本地构建产物。
 
 ## 许可证
 
-本项目使用 [GNU Affero General Public License v3.0](LICENSE)（AGPL-3.0）。
+本项目使用 [GNU General Public License v3.0](LICENSE)（GPL-3.0）。
 
 https://modrinth.com/plugin/gomoku

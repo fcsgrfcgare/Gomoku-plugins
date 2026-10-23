@@ -1,7 +1,7 @@
 # Third-party notices
 
-Gomoku itself is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).
-The bundled libraries below are compatible with AGPL-3.0.
+Gomoku itself is licensed under the GNU General Public License v3.0 (GPL-3.0).
+The bundled libraries below are compatible with GPL-3.0.
 
 Gomoku bundles the following libraries into the release jar:
 
